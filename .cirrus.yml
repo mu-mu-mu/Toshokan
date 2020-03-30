@@ -1,0 +1,14 @@
+#docker_builder:
+#  setup_script:
+#    - python -m pip install scons 
+#  build_script: scons 
+
+task:
+  container:
+    dockerfile: .ci/Dockerfile
+    docker_arguments:
+      privileged: true
+      dns: 8.8.8.8
+    kvm: true
+  test_script: scons  
+

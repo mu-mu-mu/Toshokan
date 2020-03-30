@@ -106,7 +106,7 @@ def generate_test_alias_with_kvm(env, name, depends):
     '-global hpet.msi=true',
   ])
   return hakase_test_env.AlwaysBuild(hakase_test_env.Alias('test_' + name, [cleanup_containers, containers["qemu_with_kvm"]] + depends, [
-    'docker run --device /dev/kvm:/dev/kvm -d --name toshokan_qemu_{0} -v {2}:{2} -w {2} livadk/toshokan_qemu_with_kvm qemu-system-x86_64 {1}'.format(random_str, qemu_option, rootdir),
+    'docker run --device /dev/kvm -d --name toshokan_qemu_{0} -v {2}:{2} -w {2} livadk/toshokan_qemu_with_kvm qemu-system-x86_64 {1}'.format(random_str, qemu_option, rootdir),
     'docker exec -i toshokan_qemu_{0} wait-for-rsync toshokan_qemu'.format(random_str),
     'docker exec -i toshokan_qemu_{0} rsync build/{1} toshokan_qemu:build/'.format(random_str, name),
     'docker exec -i toshokan_qemu_{0} ssh toshokan_qemu sudo build/{1}'.format(random_str, name),

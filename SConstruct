@@ -155,7 +155,7 @@ env.BuildContainer('qemu_intermediate_with_kvm', 'livadk/toshokan_ssh_intermedia
   containers["qemu_kernel_image"],
   containers["rootfs"],
   ".docker_tmp/friend_loader.ko",
-  ], docker_run_option= "--device /dev/kvm:/dev/kvm")
+  ], docker_run_option= "--device /dev/kvm")
 
 env.BuildContainer('qemu_with_kvm', 'livadk/toshokan_ssh_intermediate', [containers["ssh_intermediate"], containers["qemu_intermediate_with_kvm"]])
 
